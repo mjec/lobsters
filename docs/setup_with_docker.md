@@ -9,19 +9,19 @@
   * Run `docker compose run app bash`
   * Run `EDITOR=vim rails credentials:edit`
     * Note: This will open vim in the container
-    * Copy content from `config/credentials.yml.enc.sample` and paste it in the vim editor by right clicking on your mouse and clicking paste
+    * If you do not see a default configuration, copy content from `config/credentials.yml.enc.sample` and paste it in the vim editor by right clicking on your mouse and clicking paste
     * To save your changes and exit vim press `:` key, type `wq` and press enter
     * You should get a similar image like this:
    ![successful vim](./vim_result.jpg)
 
+* In another terminal, Run `docker compose run app bin/setup`
+* Create the fake data by running `docker compose run app rails fake_data`
+  * Note: this will take 2-5 minutes
 * Switch back to the tab running the Docker container and restart the server by:
   * Holding down `control` and `c`
   * Run `make docker-serve`
   * You should see something like this:
   ![server output](./server_output.jpg)
-* In another terminal, Run `docker compose run app bin/setup`
-* Create the fake data by running `docker compose run app rails fake_data`
-  * Note: this will take 2-5 minutes
 * Confirm the server is running by navigating to `http://0.0.0.0:3000`
 
 # Common errors
